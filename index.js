@@ -11,14 +11,15 @@ app.get('/', function(req, res){
       res.writeHead(500);
       return res.end('Error loading index.html');
     }
-
     res.writeHead(200);
     res.end(data);
   });
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  socket.on('chatMessage', function(msg){
+    io.emit('chatMessage', msg);
+  });
 });
 
 http.listen(port, function(){

@@ -4,7 +4,7 @@
     <title>Socket.io intro</title>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <section id="messages"></section>
     <form action="">
       <input type="text" id="m" autocomplete="off" /><button>Send</button>
     </form>
@@ -15,10 +15,12 @@
     <script>
       var socket = io();
       $('form').submit(function(event){
-        alert('form is submitting!');
         socket.emit('chatMessage', $('#m').val());
         $('#m').val('');
         event.preventDefault();
+      });
+      socket.on('chatMessage', function(msg){
+        $('#messages').append($('<h4>').text(msg));
       });
     </script>
   </body>
