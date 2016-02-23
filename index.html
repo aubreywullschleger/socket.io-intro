@@ -13,16 +13,6 @@
     <!-- Socket.io and jQuery -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
-    <script>
-      var socket = io();
-      $('form').submit(function(event){
-        socket.emit('chatMessage', $('#m').val());
-        $('#m').val('');
-        event.preventDefault();
-      });
-      socket.on('chatMessage', function(msg){
-        $('#messages').append($('<h4>').text(msg));
-      });
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
